@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sammy Store - FF Top Up</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#000,#0a1f44,#001f3f);
+color:white;
+}
+
+/* LOADING SCREEN */
+#loadingScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+}
+#loadingScreen video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+#loadingText{
+position:absolute;
+bottom:30px;
+color:white;
+font-weight:bold;
+background:rgba(0,0,0,0.5);
+padding:8px 15px;
+border-radius:10px;
+}
+
+/* WEBSITE */
+.container{
+width:90%;
+max-width:500px;
+margin:25px auto;
+display:none;
+}
+
+/* 🔥 KELAP KELIP */
+.dev-title{
+text-align:center;
+font-size:28px;
+font-weight:bold;
+color:#00bfff;
+margin-bottom:10px;
+animation:kelapKelip 1s infinite alternate;
+text-shadow:0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 20px #00bfff;
+}
+@keyframes kelapKelip{
+0%{
+opacity:1;
+text-shadow:0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 20px #00bfff;
+}
+100%{
+opacity:0.6;
+text-shadow:0 0 2px #00bfff, 0 0 5px #00bfff;
+}
+}
+
+.header{
+text-align:center;
+font-size:22px;
+font-weight:bold;
+color:#ffffff;
+}
+.sub{
+text-align:center;
+font-size:13px;
+opacity:0.8;
+margin-bottom:20px;
+}
+.card{
+background:rgba(255,255,255,0.07);
+padding:15px;
+border-radius:15px;
+margin-bottom:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.5);
+}
+.top{
+display:flex;
+justify-content:space-between;
+font-weight:bold;
+}
+.price{
+color:#00bfff;
+}
+button{
+width:100%;
+padding:8px;
+border:none;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+margin-top:8px;
+}
+.order-btn{background:#25D366;color:white;}
+.copy-btn{background:#00bfff;color:black;width:auto;padding:5px 10px;margin-left:5px;}
+.tele-btn{background:#0088cc;color:white;margin-top:10px;}
+.payment{background:rgba(255,255,255,0.05);padding:15px;border-radius:15px;margin-top:20px;}
+.number-box{display:flex;justify-content:space-between;align-items:center;margin-top:8px;}
+.qris-title{margin-top:15px;font-weight:bold;color:#00bfff;}
+.qris-img{width:100%;margin-top:10px;border-radius:12px;cursor:pointer;}
+#zoomBox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:999;}
+#zoomBox img{width:90%;max-width:500px;border-radius:15px;}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loadingScreen" onclick="enableSound()">
+<video id="loadingVideo" autoplay muted>
+<source src="loading.mp4" type="video/mp4">
+</video>
+<div id="loadingText">Tap Screen To Enable Sound</div>
+</div>
+
+<audio id="bgSound" loop>
+<source src="sound.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MAIN WEBSITE -->
+<div class="container" id="mainContent">
+
+<div class="dev-title">DEVELOPER SAMMY STORE</div>
+<div class="header">💎 SAMMY STORE</div>
+<div class="sub">FREE FIRE TOP UP</div>
+
+<div class="card"><div class="top"><span>5 Diamond</span><span class="price">Rp1.000</span></div><button class="order-btn" onclick="order('5 Diamond - Rp1.000')">ORDER</button></div>
+<div class="card"><div class="top"><span>12 Diamond</span><span class="price">Rp2.000</span></div><button class="order-btn" onclick="order('12 Diamond - Rp2.000')">ORDER</button></div>
+<div class="card"><div class="top"><span>50 Diamond</span><span class="price">Rp8.000</span></div><button class="order-btn" onclick="order('50 Diamond - Rp8.000')">ORDER</button></div>
+<div class="card"><div class="top"><span>70 Diamond</span><span class="price">Rp10.000</span></div><button class="order-btn" onclick="order('70 Diamond - Rp10.000')">ORDER</button></div>
+<div class="card"><div class="top"><span>140 Diamond</span><span class="price">Rp20.000</span></div><button class="order-btn" onclick="order('140 Diamond - Rp20.000')">ORDER</button></div>
+
+<div class="payment">
+<strong>💳 VARIAN PAYMENT</strong>
+
+<div class="number-box">
+<span>DANA: 08811397381</span>
+<button class="copy-btn" onclick="copyText('08811397381')">Salin</button>
+</div>
+
+<div class="number-box">
+<span>GoPay: 08984356112</span>
+<button class="copy-btn" onclick="copyText('08984356112')">Salin</button>
+</div>
+
+<div class="number-box">
+<span>OVO: 08811397381</span>
+<button class="copy-btn" onclick="copyText('08811397381')">Salin</button>
+</div>
+
+<div class="qris-title">💳 QRIS</div>
+<img src="qris.png" class="qris-img" onclick="zoomQRIS()">
+
+</div>
+
+<div class="payment">
+<strong>📩 HUBUNGI ADMIN</strong>
+
+<button class="order-btn" onclick="window.open('https://wa.me/6283107288718','_blank')">
+WhatsApp: 083107288718
+</button>
+
+<button class="tele-btn" onclick="window.open('https://t.me/sennojasbug','_blank')">
+Telegram: @sennojasbug
+</button>
+
+</div>
+
+</div>
+
+<div id="zoomBox" onclick="closeZoom()">
+<img src="qris.png">
+</div>
+
+<script>
+const video=document.getElementById("loadingVideo");
+video.onended=function(){
+document.getElementById("loadingScreen").style.display="none";
+document.getElementById("mainContent").style.display="block";
+}
+function enableSound(){
+video.muted=false;
+document.getElementById("bgSound").play();
+}
+function order(item){
+let pesan="Halo admin, saya mau order "+item;
+window.open("https://wa.me/6283107288718?text="+encodeURIComponent(pesan),"_blank");
+}
+function copyText(text){
+navigator.clipboard.writeText(text);
+alert("Nomor berhasil disalin: "+text);
+}
+function zoomQRIS(){
+document.getElementById("zoomBox").style.display="flex";
+}
+function closeZoom(){
+document.getElementById("zoomBox").style.display="none";
+}
+</script>
+
+</body>
+  </html>
