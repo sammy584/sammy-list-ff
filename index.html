@@ -50,7 +50,7 @@ margin:25px auto;
 display:none;
 }
 
-/* 🔥 KELAP KELIP */
+/* KELAP KELIP */
 .dev-title{
 text-align:center;
 font-size:28px;
@@ -123,14 +123,10 @@ margin-top:8px;
 <!-- LOADING -->
 <div id="loadingScreen" onclick="enableSound()">
 <video id="loadingVideo" autoplay muted>
-<source src="loading.mp4" type="video/mp4">
+<source src="intro.mp4" type="video/mp4">
 </video>
 <div id="loadingText">Tap Screen To Enable Sound</div>
 </div>
-
-<audio id="bgSound" loop>
-<source src="sound.mp3" type="audio/mpeg">
-</audio>
 
 <!-- MAIN WEBSITE -->
 <div class="container" id="mainContent">
@@ -189,29 +185,35 @@ Telegram: @sennojasbug
 
 <script>
 const video=document.getElementById("loadingVideo");
+
 video.onended=function(){
 document.getElementById("loadingScreen").style.display="none";
 document.getElementById("mainContent").style.display="block";
 }
+
 function enableSound(){
 video.muted=false;
-document.getElementById("bgSound").play();
+video.play();
 }
+
 function order(item){
 let pesan="Halo admin, saya mau order "+item;
 window.open("https://wa.me/6283107288718?text="+encodeURIComponent(pesan),"_blank");
 }
+
 function copyText(text){
 navigator.clipboard.writeText(text);
 alert("Nomor berhasil disalin: "+text);
 }
+
 function zoomQRIS(){
 document.getElementById("zoomBox").style.display="flex";
 }
+
 function closeZoom(){
 document.getElementById("zoomBox").style.display="none";
 }
 </script>
 
 </body>
-  </html>
+</html>
