@@ -42,6 +42,20 @@ padding:8px 15px;
 border-radius:10px;
 }
 
+/* SKIP BUTTON */
+#skipBtn{
+position:absolute;
+top:20px;
+right:20px;
+background:rgba(0,0,0,0.6);
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:20px;
+font-weight:bold;
+cursor:pointer;
+}
+
 /* WEBSITE */
 .container{
 width:90%;
@@ -71,42 +85,12 @@ text-shadow:0 0 2px #00bfff, 0 0 5px #00bfff;
 }
 }
 
-.header{
-text-align:center;
-font-size:22px;
-font-weight:bold;
-color:#ffffff;
-}
-.sub{
-text-align:center;
-font-size:13px;
-opacity:0.8;
-margin-bottom:20px;
-}
-.card{
-background:rgba(255,255,255,0.07);
-padding:15px;
-border-radius:15px;
-margin-bottom:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.5);
-}
-.top{
-display:flex;
-justify-content:space-between;
-font-weight:bold;
-}
-.price{
-color:#00bfff;
-}
-button{
-width:100%;
-padding:8px;
-border:none;
-border-radius:8px;
-font-weight:bold;
-cursor:pointer;
-margin-top:8px;
-}
+.header{text-align:center;font-size:22px;font-weight:bold;color:#ffffff;}
+.sub{text-align:center;font-size:13px;opacity:0.8;margin-bottom:20px;}
+.card{background:rgba(255,255,255,0.07);padding:15px;border-radius:15px;margin-bottom:12px;box-shadow:0 5px 15px rgba(0,0,0,0.5);}
+.top{display:flex;justify-content:space-between;font-weight:bold;}
+.price{color:#00bfff;}
+button{width:100%;padding:8px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin-top:8px;}
 .order-btn{background:#25D366;color:white;}
 .copy-btn{background:#00bfff;color:black;width:auto;padding:5px 10px;margin-left:5px;}
 .tele-btn{background:#0088cc;color:white;margin-top:10px;}
@@ -122,6 +106,7 @@ margin-top:8px;
 
 <!-- LOADING -->
 <div id="loadingScreen" onclick="enableSound()">
+<button id="skipBtn" onclick="skipVideo()">SKIP</button>
 <video id="loadingVideo" autoplay muted>
 <source src="intro.mp4" type="video/mp4">
 </video>
@@ -196,6 +181,11 @@ video.muted=false;
 video.play();
 }
 
+function skipVideo(){
+document.getElementById("loadingScreen").style.display="none";
+document.getElementById("mainContent").style.display="block";
+}
+
 function order(item){
 let pesan="Halo admin, saya mau order "+item;
 window.open("https://wa.me/6283107288718?text="+encodeURIComponent(pesan),"_blank");
@@ -216,4 +206,4 @@ document.getElementById("zoomBox").style.display="none";
 </script>
 
 </body>
-</html>
+  </html>
