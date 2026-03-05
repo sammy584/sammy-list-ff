@@ -54,6 +54,7 @@ padding:8px 15px;
 border-radius:20px;
 font-weight:bold;
 cursor:pointer;
+z-index:10000;
 }
 
 /* WEBSITE */
@@ -106,7 +107,7 @@ button{width:100%;padding:8px;border:none;border-radius:8px;font-weight:bold;cur
 
 <!-- LOADING -->
 <div id="loadingScreen" onclick="enableSound()">
-<button id="skipBtn" onclick="skipVideo()">SKIP</button>
+<button id="skipBtn" onclick="skipVideo(event)">SKIP</button>
 <video id="loadingVideo" autoplay muted>
 <source src="intro.mp4" type="video/mp4">
 </video>
@@ -181,7 +182,8 @@ video.muted=false;
 video.play();
 }
 
-function skipVideo(){
+function skipVideo(e){
+e.stopPropagation();
 document.getElementById("loadingScreen").style.display="none";
 document.getElementById("mainContent").style.display="block";
 }
